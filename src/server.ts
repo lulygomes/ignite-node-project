@@ -8,4 +8,4 @@ app.use(express.json());
 
 app.use("/categories", categoryRoutes);
 
-app.listen(4444, () => console.log("O server tá ON 4444"));
+app.listen(3333, () => console.log("O server tá ON 3333"));
