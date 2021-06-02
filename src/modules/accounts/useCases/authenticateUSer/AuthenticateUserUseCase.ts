@@ -3,6 +3,7 @@ import { response } from "express";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../erros/AppError";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 interface IRequest {
@@ -30,12 +31,12 @@ class AuthenticateUserUseCase {
       console.log(user, email);
 
       if (!user) {
-        throw new Error("Email/Senha inválidos");
+        throw new AppError("Email/Senha inválidos", 401);
       }
       const passwordIsValid = await compare(password, user.password);
 
       if (!passwordIsValid) {
-        throw new Error("Email/Senha inválidos");
+        throw new AppError("Email/Senha inválidos", 401);
       }
 
       const token = sign({}, "jkhfkjahskdfjhl543423454", {
