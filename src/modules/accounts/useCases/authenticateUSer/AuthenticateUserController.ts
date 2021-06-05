@@ -13,8 +13,6 @@ class AuthenticateUserController {
       password,
     });
 
-    console.log("aquichegou");
-
     return response.json({ user, token });
   }
 }

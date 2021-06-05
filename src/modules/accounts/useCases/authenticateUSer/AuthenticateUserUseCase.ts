@@ -28,7 +28,6 @@ class AuthenticateUserUseCase {
   async execute({ email, password }: IRequest): Promise<IResponse | any> {
     try {
       const user = await this.userRepository.findByEmail(email);
-      console.log(user, email);
 
       if (!user) {
         throw new AppError("Email/Senha inválidos", 401);
