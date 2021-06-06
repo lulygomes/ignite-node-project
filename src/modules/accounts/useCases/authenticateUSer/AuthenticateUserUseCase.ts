@@ -25,7 +25,7 @@ class AuthenticateUserUseCase {
     @inject("UsersRepository")
     private userRepository: IUsersRepository
   ) {}
-  async execute({ email, password }: IRequest): Promise<IResponse | any> {
+  async execute({ email, password }: IRequest): Promise<IResponse | AppError> {
     try {
       const user = await this.userRepository.findByEmail(email);
 
@@ -39,7 +39,7 @@ class AuthenticateUserUseCase {
       }
 
       const token = sign({}, "jkhfkjahskdfjhl543423454", {
-        subject: user.id,
+        subject: user.id.toString(),
         expiresIn: "1d",
       });
 
@@ -53,8 +53,7 @@ class AuthenticateUserUseCase {
 
       return tokenReturn;
     } catch (err) {
-      console.log(err);
-      return { err };
+      throw new AppError("Faild to create Token");
     }
   }
 }
