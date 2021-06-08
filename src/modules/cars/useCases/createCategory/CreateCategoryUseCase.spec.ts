@@ -1,6 +1,6 @@
 /* eslint-disable no-return-await */
-import { AppError } from "@erros/AppError";
 import CategoriesRepositoryInMemory from "@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory";
+import { AppError } from "@shared/erros/AppError";
 
 import CreateCategoryUseCase from "./CreateCategoryUseCase";
 

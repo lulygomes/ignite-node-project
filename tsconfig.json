@@ -14,12 +14,6 @@
       "@shared/*": [
         "shared/*"
       ],
-      "@erros/*": [
-        "erros/*"
-      ],
-      "@middlewares/*": [
-        "middlewares/*"
-      ],
       "@utils/*": [
         "utils/*"
       ]
