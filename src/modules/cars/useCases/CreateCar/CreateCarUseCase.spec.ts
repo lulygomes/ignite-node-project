@@ -12,7 +12,7 @@ describe("Create Car", () => {
     createCarUseCase = new CreateCarUseCase(carsRepositoryInMemory);
   });
   it("shoud be able to create a new car", async () => {
-    await createCarUseCase.execute({
+    const car = await createCarUseCase.execute({
       name: "Name Car",
       description: "Description of Car",
       daily_rate: 180,
@@ -21,6 +21,8 @@ describe("Create Car", () => {
       brand: "Brand",
       category_id: "category",
     });
+
+    expect(car).toHaveProperty("id");
   });
 
   it("shoud not be able to add a new car if licenses plate is already in use ", async () => {
@@ -57,8 +59,6 @@ describe("Create Car", () => {
       brand: "Brand",
       category_id: "category",
     });
-
-    console.log(car);
 
     expect(car.available).toBe(true);
   });
